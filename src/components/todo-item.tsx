@@ -26,7 +26,14 @@ export default function TodoItem(props: Props) {
           checked={!!props.todo.completed_at}
           onChange={(e) => e.target.form?.requestSubmit()}
         />
-        <span>{props.todo.task}</span>
+        <div className="flex flex-1 items-center justify-between">
+          <span>{props.todo.task}</span>
+          {props.todo.attachment_url ? (
+            <a href={props.todo.attachment_url} target="_blank" rel="noopener noreferrer">
+              <img alt={props.todo.task} src={props.todo.attachment_url} className="h-12 w-12 object-contain" />
+            </a>
+          ) : null}
+        </div>
       </label>
     </form>
   );

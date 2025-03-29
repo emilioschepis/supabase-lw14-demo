@@ -54,6 +54,7 @@ export type Database = {
       }
       todos: {
         Row: {
+          attachment_url: string | null
           completed_at: string | null
           created_at: string
           id: string
@@ -61,6 +62,7 @@ export type Database = {
           task: string
         }
         Insert: {
+          attachment_url?: string | null
           completed_at?: string | null
           created_at?: string
           id?: string
@@ -68,6 +70,7 @@ export type Database = {
           task: string
         }
         Update: {
+          attachment_url?: string | null
           completed_at?: string | null
           created_at?: string
           id?: string

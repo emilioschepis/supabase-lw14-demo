@@ -46,6 +46,12 @@ port = 54324
 enabled = true
 file_size_limit = "50MiB"
 
+[storage.buckets.attachments]
+public = true
+file_size_limit = "50MiB"
+allowed_mime_types = ["image/png", "image/jpeg"]
+objects_path = "./objects/"
+
 [auth]
 enabled = true
 site_url = "http://127.0.0.1:3000"
