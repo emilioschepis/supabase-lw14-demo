@@ -1,5 +1,6 @@
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
+import { queryOptions, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, redirect } from "@tanstack/react-router";
+import { useEffect } from "react";
 import AddTodoForm from "~/components/add-todo-form";
 import TodoItem from "~/components/todo-item";
 import { supabaseClient } from "../lib/supabase";
@@ -23,8 +24,30 @@ export const Route = createFileRoute("/dashboard")({
 });
 
 function RouteComponent() {
+  const queryClient = useQueryClient();
   const query = useSuspenseQuery(todosQueryOptions);
   const todos = query.data.data;
+
+  useEffect(() => {
+    const channel = supabaseClient
+      .channel("todos")
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "todos",
+        },
+        () => {
+          queryClient.invalidateQueries({ queryKey: ["todos"] });
+        },
+      )
+      .subscribe();
+
+    return () => {
+      channel.unsubscribe();
+    };
+  }, []);
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
