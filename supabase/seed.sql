@@ -1,5 +1,12 @@
-INSERT INTO "public"."todos" ("id", "created_at", "task", "completed_at") VALUES
-('3cc8c409-652b-46d2-8420-81e736b1362a', '2025-03-29 01:00:00.000000+00', 'Create React project', '2025-03-29 01:00:00.000000+00'),
-('06869696-38c2-4865-98ba-3a05418f80b6', '2025-03-29 02:00:00.000000+00', 'Add Supabase', '2025-03-29 02:00:00.000000+00'),
-('8339cfa6-d781-4143-86bd-a911a245d408', '2025-03-29 03:00:00.000000+00', 'Create todos table', '2025-03-29 03:00:00.000000+00'),
-('1e98e527-ccac-48b9-a8a1-193f6b817d15', '2025-03-29 04:00:00.000000+00', 'Show todos on the frontend', NULL);
+INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at", "is_anonymous") VALUES
+('00000000-0000-0000-0000-000000000000', '365f485e-f9d0-44fb-b85d-df6c58deca36', 'authenticated', 'authenticated', 'emilio@example.com', '$2a$10$5qMpv3uVHJQ0mBSGMYHRIu7bqmhS39Z5p1rpjlUBB.GTvJc/lwxKO', '2025-03-29 00:00:00.000000+00', NULL, '', NULL, '', NULL, '', '', NULL, NULL, '{"provider": "email", "providers": ["email"]}', '{"email_verified": true}', NULL, '2025-03-29 00:00:00.000000+00', '2025-03-29 00:00:00.000000+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, 'f', NULL, 'f'),
+('00000000-0000-0000-0000-000000000000', '8b768925-5ce7-4aeb-b7da-e67d4a3c0d42', 'authenticated', 'authenticated', 'federico@example.com', '$2a$10$5gk5hXNh0/mfqjRa.weY5.oAh8GlRDguXvaX3PQ0Uhjv9oJDYsKmC', '2025-03-29 00:00:00.000000+00', NULL, '', NULL, '', NULL, '', '', NULL, NULL, '{"provider": "email", "providers": ["email"]}', '{"email_verified": true}', NULL, '2025-03-29 00:00:00.000000+00', '2025-03-29 00:00:00.000000+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, 'f', NULL, 'f');
+
+INSERT INTO "public"."todos" ("id", "profile_id", "created_at", "task", "completed_at") VALUES
+('3cc8c409-652b-46d2-8420-81e736b1362a', '365f485e-f9d0-44fb-b85d-df6c58deca36', '2025-03-29 01:00:00.000000+00', 'Create React project', '2025-03-29 01:00:00.000000+00'),
+('06869696-38c2-4865-98ba-3a05418f80b6', '365f485e-f9d0-44fb-b85d-df6c58deca36', '2025-03-29 02:00:00.000000+00', 'Add Supabase', '2025-03-29 02:00:00.000000+00'),
+('8339cfa6-d781-4143-86bd-a911a245d408', '365f485e-f9d0-44fb-b85d-df6c58deca36', '2025-03-29 03:00:00.000000+00', 'Create todos table', '2025-03-29 03:00:00.000000+00'),
+('1e98e527-ccac-48b9-a8a1-193f6b817d15', '365f485e-f9d0-44fb-b85d-df6c58deca36', '2025-03-29 04:00:00.000000+00', 'Show todos on the frontend', NULL),
+('a13266ee-bdd2-4422-9a42-2b09cd8d7a47', '8b768925-5ce7-4aeb-b7da-e67d4a3c0d42', '2025-03-29 05:00:00.000000+00', 'Make another account', '2025-03-29 05:00:00.000000+00'),
+('1c8756c5-24e7-4254-9c4f-6e04888e799b', '8b768925-5ce7-4aeb-b7da-e67d4a3c0d42', '2025-03-29 06:00:00.000000+00', 'Update my own todos', '2025-03-29 06:00:00.000000+00'),
+('d00b7dd0-adbd-4b9d-bfc8-d2fcec20581a', '8b768925-5ce7-4aeb-b7da-e67d4a3c0d42', '2025-03-29 07:00:00.000000+00', 'Try to view someone else''s todos', NULL);

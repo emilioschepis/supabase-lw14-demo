@@ -34,26 +34,55 @@ export type Database = {
   }
   public: {
     Tables: {
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
       todos: {
         Row: {
           completed_at: string | null
           created_at: string
           id: string
+          profile_id: string
           task: string
         }
         Insert: {
           completed_at?: string | null
           created_at?: string
           id?: string
+          profile_id?: string
           task: string
         }
         Update: {
           completed_at?: string | null
           created_at?: string
           id?: string
+          profile_id?: string
           task?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "todos_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {

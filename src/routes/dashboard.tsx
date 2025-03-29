@@ -1,5 +1,5 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import AddTodoForm from "~/components/add-todo-form";
 import TodoItem from "~/components/todo-item";
 import { supabaseClient } from "../lib/supabase";
@@ -12,6 +12,14 @@ const todosQueryOptions = queryOptions({
 export const Route = createFileRoute("/dashboard")({
   component: RouteComponent,
   loader: ({ context }) => context.queryClient.ensureQueryData(todosQueryOptions),
+  beforeLoad: async () => {
+    const user = await supabaseClient.auth.getUser();
+    if (!user.data.user) {
+      throw redirect({
+        to: "/login",
+      });
+    }
+  },
 });
 
 function RouteComponent() {

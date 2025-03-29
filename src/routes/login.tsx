@@ -1,11 +1,24 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { supabaseClient } from "~/lib/supabase";
 
 export const Route = createFileRoute("/login")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  async function submitForm(formData: FormData) {}
+  const navigate = useNavigate();
+
+  async function submitForm(formData: FormData) {
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    const result = await supabaseClient.auth.signInWithPassword({ email, password });
+    if (result.data.user) {
+      navigate({
+        to: "/dashboard",
+      });
+    }
+  }
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
