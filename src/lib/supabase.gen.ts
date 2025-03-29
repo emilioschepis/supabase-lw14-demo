@@ -34,7 +34,27 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      todos: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          id: string
+          task: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          task: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          task?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

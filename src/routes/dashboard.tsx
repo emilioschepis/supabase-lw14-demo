@@ -1,12 +1,23 @@
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import AddTodoForm from "~/components/add-todo-form";
 import TodoItem from "~/components/todo-item";
+import { supabaseClient } from "../lib/supabase";
+
+const todosQueryOptions = queryOptions({
+  queryKey: ["todos"],
+  queryFn: async () => supabaseClient.from("todos").select("*").order("created_at").throwOnError(),
+});
 
 export const Route = createFileRoute("/dashboard")({
   component: RouteComponent,
+  loader: ({ context }) => context.queryClient.ensureQueryData(todosQueryOptions),
 });
 
 function RouteComponent() {
+  const query = useSuspenseQuery(todosQueryOptions);
+  const todos = query.data.data;
+
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -21,9 +32,9 @@ function RouteComponent() {
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
         <div className="bg-white px-6 py-12 shadow-sm sm:rounded-lg sm:px-12">
           <div className="space-y-4">
-            <TodoItem />
-            <TodoItem />
-            <TodoItem />
+            {todos.map((todo) => (
+              <TodoItem key={todo.id} todo={todo} />
+            ))}
             <AddTodoForm />
           </div>
         </div>
