@@ -1,5 +1,15 @@
+import { useQueryClient } from "@tanstack/react-query";
+import { supabaseClient } from "~/lib/supabase";
+
 export default function AddTodoForm() {
-  async function submitForm(formData: FormData) {}
+  const queryClient = useQueryClient();
+
+  async function submitForm(formData: FormData) {
+    const task = formData.get("task") as string;
+
+    await supabaseClient.from("todos").insert({ task });
+    queryClient.invalidateQueries({ queryKey: ["todos"] });
+  }
 
   return (
     <form action={submitForm} className="flex items-stretch gap-2">

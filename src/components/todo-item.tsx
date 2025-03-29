@@ -1,3 +1,5 @@
+import { useQueryClient } from "@tanstack/react-query";
+import { supabaseClient } from "~/lib/supabase";
 import type { Database } from "~/lib/supabase.gen";
 
 type Props = {
@@ -5,7 +7,15 @@ type Props = {
 };
 
 export default function TodoItem(props: Props) {
-  async function submitForm(formData: FormData) {}
+  const queryClient = useQueryClient();
+
+  async function submitForm(formData: FormData) {
+    const checked = !!formData.get(props.todo.id);
+    const completed_at = checked ? new Date().toISOString() : null;
+
+    await supabaseClient.from("todos").update({ completed_at }).eq("id", props.todo.id);
+    queryClient.invalidateQueries({ queryKey: ["todos"] });
+  }
 
   return (
     <form action={submitForm}>
