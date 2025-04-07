@@ -11,7 +11,8 @@
     "sb:start": "supabase start",
     "sb:reset": "supabase db reset",
     "sb:stop": "supabase stop --no-backup",
-    "sb:generate": "supabase gen types typescript --local > src/lib/supabase.gen.ts"
+    "sb:generate": "supabase gen types typescript --local > src/lib/supabase.gen.ts",
+    "sb:serve": "supabase functions serve --env-file=.env.local"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",

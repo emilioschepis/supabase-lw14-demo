@@ -81,3 +81,8 @@ secure_password_change = false
 max_frequency = "1s"
 otp_length = 6
 otp_expiry = 3600
+
+[functions.summary]
+enabled = true
+verify_jwt = true
+import_map = "./functions/summary/deno.json"

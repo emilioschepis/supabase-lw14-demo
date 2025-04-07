@@ -1,3 +1,8 @@
 {
-  "recommendations": ["esbenp.prettier-vscode", "bradlc.vscode-tailwindcss", "ms-azuretools.vscode-docker"]
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "ms-azuretools.vscode-docker",
+    "denoland.vscode-deno"
+  ]
 }

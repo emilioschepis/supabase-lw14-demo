@@ -2,6 +2,7 @@ import { queryOptions, useQueryClient, useSuspenseQuery } from "@tanstack/react-
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useEffect } from "react";
 import AddTodoForm from "~/components/add-todo-form";
+import SummaryForm from "~/components/summary-form";
 import TodoItem from "~/components/todo-item";
 import { supabaseClient } from "../lib/supabase";
 
@@ -67,6 +68,7 @@ function RouteComponent() {
               <TodoItem key={todo.id} todo={todo} />
             ))}
             <AddTodoForm />
+            <SummaryForm />
           </div>
         </div>
       </div>

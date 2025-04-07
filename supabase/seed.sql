@@ -10,4 +10,7 @@ INSERT INTO "public"."todos" ("id", "profile_id", "created_at", "task", "complet
 ('a13266ee-bdd2-4422-9a42-2b09cd8d7a47', '8b768925-5ce7-4aeb-b7da-e67d4a3c0d42', '2025-03-29 05:00:00.000000+00', 'Make another account', '2025-03-29 05:00:00.000000+00', NULL),
 ('1c8756c5-24e7-4254-9c4f-6e04888e799b', '8b768925-5ce7-4aeb-b7da-e67d4a3c0d42', '2025-03-29 06:00:00.000000+00', 'Update my own todos', '2025-03-29 06:00:00.000000+00', NULL),
 ('d00b7dd0-adbd-4b9d-bfc8-d2fcec20581a', '8b768925-5ce7-4aeb-b7da-e67d4a3c0d42', '2025-03-29 07:00:00.000000+00', 'Try to view someone else''s todos', NULL, NULL),
-('ad2ac0f8-13df-4a4b-8f87-19ee6245a735', '365f485e-f9d0-44fb-b85d-df6c58deca36', '2025-03-29 08:00:00.000000+00', 'Add storage attachments', NULL, 'http://127.0.0.1:54321/storage/v1/object/public/attachments//supabase.png');
+('ad2ac0f8-13df-4a4b-8f87-19ee6245a735', '365f485e-f9d0-44fb-b85d-df6c58deca36', '2025-03-29 08:00:00.000000+00', 'Add storage attachments', NULL, 'http://127.0.0.1:54321/storage/v1/object/public/attachments//supabase.png'),
+('115666e1-f64a-42ad-908f-87c4c961178d', '365f485e-f9d0-44fb-b85d-df6c58deca36', '2025-03-29 09:00:00.000000+00', 'Showcase edge functions', NULL, NULL),
+('4e094ecc-0c38-4424-bf45-9b1739dba8ae', '365f485e-f9d0-44fb-b85d-df6c58deca36', '2025-03-29 10:00:00.000000+00', 'Generate an AI summary', NULL, NULL),
+('0f4507ed-ca19-4508-9905-6d29b0fcba79', '365f485e-f9d0-44fb-b85d-df6c58deca36', '2025-03-29 11:00:00.000000+00', 'End the presentation', NULL, NULL);
